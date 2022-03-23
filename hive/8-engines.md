@@ -82,10 +82,6 @@ Compare Spark performance vs MapReduce.
 
 
 ```sql
-
-        -- use MR
-        set hive.execution.engine=mr;  
-
         select account_id, SUM(amount_customer) as total from transactions group by account_id order by total desc limit 10;
         -- measure time taken
 
@@ -105,7 +101,6 @@ Now let's try a join query.
 ```sql
 
         -- use MR
-        set hive.execution.engine=mr;  
         select  vendors.category,  SUM(transactions.amount_customer) as total
             from transactions join vendors on (transactions.vendor_id = vendors.id) group by vendors.category ;
         -- measure time taken
